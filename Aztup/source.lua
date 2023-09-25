@@ -848,7 +848,7 @@ local function initLibrary()
                             Position = UDim2.new(0, 4, 0, 0);
                             Size = UDim2.new(1, -4, 0, 18);
                             Font = Enum.Font.Gotham;
-                            Text = "Drop value";
+                            Text = "nil";
                             TextColor3 = Color3.fromRGB(255, 255, 255);
                             TextSize = 12.000;
                             TextXAlignment = Enum.TextXAlignment.Left;
