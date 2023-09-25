@@ -1,6 +1,6 @@
 
 
-getgenv().title = "nil"
+getgenv().title = "Car Crushers 2"
 local function initLibrary()
     local library = {flags = {}, callbacks = {}, rainbowI = 0};
 
