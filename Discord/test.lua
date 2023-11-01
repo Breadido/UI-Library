@@ -1,6 +1,4 @@
 
--- tested source for mobile device
-
 
 
 
@@ -2069,7 +2067,7 @@ function DiscordLib:Window(text, idk)
             ChannelBtnHashtag.BackgroundTransparency = 1.000
             ChannelBtnHashtag.Position = UDim2.new(0.0009720314, 0, 0, 0)
             ChannelBtnHashtag.Size = UDim2.new(0, 24, 0, 24)
-            ChannelBtnHashtag.Image = image
+            ChannelBtnHashtag.Image = image or nil
             ChannelBtnHashtag.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
 			ChannelBtnTitle.Name = "ChannelBtnTitle"
