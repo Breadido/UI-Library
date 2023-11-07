@@ -287,15 +287,6 @@ function library:CreateWindow(name, hidebutton)
             window.Frame.Visible = not window.Frame.Visible
         end
     end)
-    local function checkIfGuiInFront(Pos)
-        local objects = coregui:GetGuiObjectsAtPosition(Pos.X, Pos.Y)
-        for i, v in pairs(objects) do
-            if not string.find(v:GetFullName(), window.name) then
-                table.remove(objects, i)
-            end
-        end
-        return (#objects ~= 0 and objects[1].AbsolutePosition ~= Pos)
-    end
     window.BlackOutline = Instance.new("Frame", window.Frame)
     window.BlackOutline.Name = "outline"
     window.BlackOutline.ZIndex = 1
