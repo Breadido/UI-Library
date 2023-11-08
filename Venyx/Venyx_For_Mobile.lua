@@ -1,4 +1,3 @@
-
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
@@ -268,7 +267,7 @@ do
 					Name = "TopBar",
 					BackgroundTransparency = 1,
 					ClipsDescendants = true,
-					Size = UDim2.new(1, 0, 0, 35),
+					Size = UDim2.new(1, 0, 0, 38),
 					ZIndex = 5,
 					Image = "rbxassetid://4595286933",
 					ImageColor3 = themes.Accent,
