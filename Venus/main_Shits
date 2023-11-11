@@ -1,4 +1,7 @@
 
+
+
+
 local inputService = game:GetService("UserInputService")
 local tweenService = game:GetService("TweenService")
 local runService = game:GetService("RunService")
@@ -20,16 +23,16 @@ local themes = {
         Section = Color3.fromRGB(20, 20, 20),
         Button = Color3.fromRGB(30, 30, 30),
         ButtonMouseOver = Color3.fromRGB(40, 40, 40),
-        ToggleEnabled = Color3.fromRGB(0, 0, 255),
-        ToggleEnabledMouseOver = Color3.fromRGB(0, 0, 225),
+        ToggleEnabled = Color3.fromRGB(255, 0, 0),
+        ToggleEnabledMouseOver = Color3.fromRGB(225, 0, 0),
         ToggleDisabled = Color3.fromRGB(30, 30, 30),
         ToggleDisabledMouseOver = Color3.fromRGB(40, 40, 40),
         Box = Color3.fromRGB(30, 30, 30),
         BoxFocused = Color3.fromRGB(40, 40, 40),
         Slider = Color3.fromRGB(30, 30, 30),
         SliderMouseOver = Color3.fromRGB(40, 40, 40),
-        SliderFill = Color3.fromRGB(0, 0, 255),
-        SliderFillSliding = Color3.fromRGB(0, 0, 225),
+        SliderFill = Color3.fromRGB(255, 0, 0),
+        SliderFillSliding = Color3.fromRGB(225, 0, 0),
         Dropdown = Color3.fromRGB(30, 30, 30),
         DropdownMouseOver = Color3.fromRGB(40, 40, 40),
         DropdownContent = Color3.fromRGB(20, 20, 20),
@@ -220,6 +223,8 @@ function library:Load(opts)
 
     local holder = utility.create("Frame", {
         Size = UDim2.new(0, sizeX, 0, 26),
+        Draggable = true,
+        Active = true,
         BackgroundTransparency = 1,
         Position = utility.get_center(sizeX, sizeY),
         BackgroundColor3 = Color3.fromRGB(255, 255, 255),
@@ -241,7 +246,7 @@ function library:Load(opts)
         Parent = holder
     })
 
-    utility.drag(holder)
+    --utility.drag(holder)
 
     local main = utility.create("Frame", {
         Size = UDim2.new(1, 0, 0, sizeY),
@@ -821,7 +826,7 @@ function library:Load(opts)
                 end
 
                 slider.InputBegan:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
                         sliding = true
                         utility.tween(fill, {0.2}, {BackgroundColor3 = theme.SliderFillSliding})
                         slide(input)
@@ -829,7 +834,7 @@ function library:Load(opts)
                 end)
 
                 slider.InputEnded:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
                         utility.tween(fill, {0.2}, {BackgroundColor3 = theme.SliderFill})
                         sliding = false
                         if not mouseOver then
@@ -2707,4 +2712,79 @@ function library:Load(opts)
 
     return windowTypes
 end
-return library
+
+local main = library:Load({Name = "JailHelper", Theme = "Dark", SizeX = 500, SizeY = 330, ColorOverrides = {}})
+local aimbot = main:Tab("Home")
+local section = aimbot:Section({Name = "Section", column = 1})
+
+-- object:Hide()
+-- object:Show()
+
+local label = section:Label("Label")
+
+local button = section:Button({Name = "Button", Callback = function()
+   print("Button pressed")
+end})
+
+local toggle = section:Toggle({Name = "Toggle", Flag = "Toggle", callback = function(bool)
+   print(bool)
+end})
+
+-- toggle:Toggle(bool)
+
+local box = section:Box({Name = "Box", Flag = "Box", Callback = function(box)
+   print(box)
+end})
+
+-- box:Set(str)
+
+local slider = section:Slider({Name = "Slider", Min = 10, Max = 100, Default = 20, Flag = "Slider", Callback = function(slider)
+   print(slider)
+end})
+
+-- slider:Set(num)
+
+local dropdown = section:Dropdown({Default = "Option1", Content = {"Option1", "Option2"}, MultiChoice = false, Flag = "Dropdown", Callback = function(opt)
+   print(opt)
+end})
+
+-- dropdown:Refresh(tbl)
+-- dropdown:Set(option)
+-- dropdown:Add(option)
+-- dropdown:Remove(option)
+
+local keybind = section:Keybind({Name = "Keybind", Default = Enum.KeyCode.A,  Flag = "Keybind", Callback = function(key)
+   print("keybind pressed")
+end})
+
+-- keybind:Set(key)
+
+local toggleKeybind = section:ToggleKeybind({Name = "Toggle Keybind", Default = Enum.KeyCode.A,  KeybindFlag = "ToggleKeybind", ToggleFlag = "ToggleKeybindToggle", ToggleCallback = function(bool)
+   print(bool)
+end,
+KeybindCallback = function(key)
+   print("Toggle Keybind")
+end})
+
+-- toggleKeybind:Set(key)
+-- toggleKeybind:Toggle(bool)
+
+local colorPicker = section:ColorPicker({name = "Color Picker", Default = Color3.fromRGB(255, 0, 255),  Flag = "Color Picker", Callback = function(color)
+   print(color.r * 255, color.g * 255, color.b * 255)
+end})
+
+-- colorPicker:SetHex(hex)
+-- colorPicker:SetRGB(rgb Color3)
+
+local colorPickerToggle = section:ToggleColorPicker({Name = "Color Picker Toggle", Default = Color3.fromRGB(100, 10, 10), ToggleFlag = "ToggleColorPickerToggle", ColorPickerFlag = "ToggleColorPicker", ToggleCallback = function(bool)
+   print(bool)
+end,
+ColorPickerCallback = function(color)
+   print(color)
+end})
+
+print(library.Flags["ToggleColorPicker"])
+
+-- colorPickerToggle:Toggle(bool)
+-- colorPickerToggle:SetHex(hex)
+-- colorPickerToggle:SetRGB(rgb Color3)
