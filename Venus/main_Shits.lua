@@ -153,6 +153,65 @@ function utility.drag(obj)
     end)
 end
 
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local function MakeDraggable(topbarobject, object)
+	local Dragging = nil
+	local DragInput = nil
+	local DragStart = nil
+	local StartPosition = nil
+
+	local function Update(input)
+		local Delta = input.Position - DragStart
+		local pos =
+			UDim2.new(
+				StartPosition.X.Scale,
+				StartPosition.X.Offset + Delta.X,
+				StartPosition.Y.Scale,
+				StartPosition.Y.Offset + Delta.Y
+			)
+		local Tween = TweenService:Create(object, TweenInfo.new(0.01), {Position = pos})
+		Tween:Play()
+	end
+
+	topbarobject.InputBegan:Connect(
+		function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				Dragging = true
+				DragStart = input.Position
+				StartPosition = object.Position
+
+				input.Changed:Connect(
+					function()
+						if input.UserInputState == Enum.UserInputState.End then
+							Dragging = false
+						end
+					end
+				)
+			end
+		end
+	)
+
+	topbarobject.InputChanged:Connect(
+		function(input)
+			if
+				input.UserInputType == Enum.UserInputType.MouseMovement or
+					input.UserInputType == Enum.UserInputType.Touch
+			then
+				DragInput = input
+			end
+		end
+	)
+
+	UserInputService.InputChanged:Connect(
+		function(input)
+			if input == DragInput and Dragging then
+				Update(input)
+			end
+		end
+	)
+end
+
 function utility.get_center(sizeX, sizeY)
     return UDim2.new(0.5, -(sizeX / 2), 0.5, -(sizeY / 2))
 end
@@ -231,7 +290,7 @@ function library:Load(opts)
         Parent = venuslib
     })
 
-    utility.create("TextLabel", {
+    local title = utility.create("TextLabel", {
         Size = UDim2.new(0, 1, 1, 0),
         BackgroundTransparency = 1,
         Position = UDim2.new(0, 8, 0, 0),
@@ -245,9 +304,9 @@ function library:Load(opts)
         ZIndex = 2,
         Parent = holder
     })
-
-    utility.drag(holder)
-
+	
+    --utility.drag(holder)
+	MakeDraggable(title,holder)
     local main = utility.create("Frame", {
         Size = UDim2.new(1, 0, 0, sizeY),
         BackgroundColor3 = theme.MainFrame,
