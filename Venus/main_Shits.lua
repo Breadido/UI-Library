@@ -246,7 +246,7 @@ function library:Load(opts)
         Parent = holder
     })
 
-    --utility.drag(holder)
+    utility.drag(holder)
 
     local main = utility.create("Frame", {
         Size = UDim2.new(1, 0, 0, sizeY),
