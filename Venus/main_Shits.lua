@@ -147,7 +147,7 @@ function utility.drag(obj)
     end)
 
     inputService.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then   
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch and dragging then   
             utility.tween(obj, {library.dragSpeed}, {Position = UDim2.new(objPosition.X.Scale, objPosition.X.Offset + (input.Position - start).X, objPosition.Y.Scale, objPosition.Y.Offset + (input.Position - start).Y)})
         end
     end)
@@ -223,8 +223,8 @@ function library:Load(opts)
 
     local holder = utility.create("Frame", {
         Size = UDim2.new(0, sizeX, 0, 26),
-        Draggable = true,
-        Active = true,
+        --Draggable = true,
+        --Active = true,
         BackgroundTransparency = 1,
         Position = utility.get_center(sizeX, sizeY),
         BackgroundColor3 = Color3.fromRGB(255, 255, 255),
