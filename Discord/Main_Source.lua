@@ -3,8 +3,8 @@
 -- il realese a example later because i edit a bit on some elements soo you guys can use this edited discord lib source
 
 local DiscordLib = {}
-_G.color = Color3.fromRGB(200,0,0)
-_G.color2 = Color3.fromRGB(227,0,0)
+_G.color = Color3.fromRGB(160,160,160)
+_G.color2 = Color3.fromRGB(150,150,150)
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
