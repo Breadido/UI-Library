@@ -764,8 +764,8 @@ function hoho:Window(hub, the_game_name, main_color)
 
 			ClickThis.Name = "ClickThis"
 			ClickThis.Parent = ToggleTemp
-			ClickThis.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			ClickThis.Position = UDim2.new(0.863192201, 0, 0.1875, 0)
+			ClickThis.BackgroundColor3 = Color3.fromRGB(150,150,150)
+			ClickThis.Position = UDim2.new(0.873192201, 0, 0.1875, 0)
 			ClickThis.Size = UDim2.new(0, 18, 0, 18)
 			ClickThis.ZIndex = 7
 			ClickThis.Font = Enum.Font.SourceSans
@@ -774,7 +774,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			ClickThis.TextSize = 14.000
 			
 			UICorner_2.Parent = ClickThis
-			UICorner_2.CornerRadius = UDim.new(0, 5)
+			UICorner_2.CornerRadius = UDim.new(0, 7)
 			
 			local toggled = state or false
 			if toggled == true then
@@ -787,7 +787,7 @@ function hoho:Window(hub, the_game_name, main_color)
 						func(toggled)
 					end)
 					ripple(ClickThis, mouse.X, mouse.Y)
-					ClickThis.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+					ClickThis.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
 				else
 					toggled = true
 					pcall(function()
