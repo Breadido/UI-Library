@@ -774,6 +774,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			ClickThis.TextSize = 14.000
 			
 			UICorner_2.Parent = ClickThis
+			UICorner_2.CornerRadius = UDim.new(0, 5)
 			
 			local toggled = state or false
 			if toggled == true then
@@ -786,7 +787,7 @@ function hoho:Window(hub, the_game_name, main_color)
 						func(toggled)
 					end)
 					ripple(ClickThis, mouse.X, mouse.Y)
-					ClickThis.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					ClickThis.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
 				else
 					toggled = true
 					pcall(function()
