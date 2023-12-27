@@ -746,7 +746,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			TextHere.Text = "  "..toggle_text or "text"
 			TextHere.TextColor3 = main_color or Color3.fromRGB(0, 255, 127)
 			TextHere.TextScaled = true
-			TextHere.TextSize = 14.000
+			TextHere.TextSize = 12.000
 			TextHere.TextStrokeTransparency = 0.100
 			TextHere.TextTransparency = 0.100
 			TextHere.TextWrapped = true
@@ -964,7 +964,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			DropButton.Font = Enum.Font.Cartoon
 			DropButton.Text = txt..": nil 💬"
 			DropButton.TextColor3 = main_color or Color3.fromRGB(0, 255, 127)
-			DropButton.TextSize = 19.000
+			DropButton.TextSize = 16.000
 			DropButton.TextStrokeTransparency = 0.100
 			DropButton.TextTransparency = 0.100
 			DropButton.TextWrapped = true
