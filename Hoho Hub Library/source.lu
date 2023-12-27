@@ -375,6 +375,7 @@ function hoho:Window(hub, the_game_name, main_color)
 	SettingBt.Image = "rbxassetid://6863506969"
 	SettingBt.HoverImage = "rbxassetid://3340612992"
 	SettingBt.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	SettingBt.Visible = false
 	
 	SettingBt.MouseButton1Click:Connect(function()
 		pcall(function()
@@ -635,7 +636,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			ClickMe.Size = UDim2.new(0, 291, 0, 22)
 			ClickMe.ZIndex = 5
 			ClickMe.Font = Enum.Font.Cartoon
-			ClickMe.Text = text.." 🖱️" or "Button 🖱️"
+			ClickMe.Text = text or "Button 🖱️"
 			ClickMe.TextColor3 = Color3.fromRGB(0, 0, 0)
 			ClickMe.TextSize = 19.000
 			ClickMe.TextWrapped = true
@@ -668,7 +669,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			
 			local hoho_button = {}
 			function hoho_button:NewButton(new)
-				ClickMe.Text = new.." 🖱️" or "Button 🖱️"
+				ClickMe.Text = new or "Button"
 			end
 			return hoho_button
 		end
@@ -765,7 +766,7 @@ function hoho:Window(hub, the_game_name, main_color)
 			ClickThis.Name = "ClickThis"
 			ClickThis.Parent = ToggleTemp
 			ClickThis.BackgroundColor3 = Color3.fromRGB(150,150,150)
-			ClickThis.Position = UDim2.new(0.873192201, 0, 0.1875, 0)
+			ClickThis.Position = UDim2.new(0.893192201, 0, 0.1875, 0)
 			ClickThis.Size = UDim2.new(0, 18, 0, 18)
 			ClickThis.ZIndex = 7
 			ClickThis.Font = Enum.Font.SourceSans
