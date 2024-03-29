@@ -83,6 +83,7 @@ function DCorrectTable(tabl)
     end
     return ret
 end
+--[[
 local HttpService = game:GetService("HttpService")
 local SaveCustomFileName = "!CustomUI.json"
  
@@ -121,6 +122,7 @@ if not getgenv().ractvkretarddumb then
     end)
     getgenv().ractvkretarddumb = true
 end
+--]]
 getgenv().UIColor=setmetatable({},{
     __newindex=function(Self, Key, Value) 
         if UpdateCallBack[Key] then 
