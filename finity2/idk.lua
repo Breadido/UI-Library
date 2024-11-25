@@ -1554,8 +1554,12 @@ function finity.new(theme_name, gprojectName, thinProject)
 						cheat.button.Parent = cheat.container
 					end
 				end
-				function cheat:UpdateText(name)
+				function cheat:UpdateText(name,wrappedtext)
 					cheat.label.Text = name
+					print(string.len(cheat.label.Text))
+					--if cheat.label.Text > 30 and wrappedtext then
+
+					--end
 				end
 				cheat.frame.Parent = sector.container
 				cheat.label.Parent = cheat.frame
